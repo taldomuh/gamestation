@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang ="pt-br">
+<head>
+<meta charset ="UTF -8">
+<meta name ="viewport" content ="width= device-width, initial-scale =1.0 ">
+
+<title > Produtos / Serviços - Game Station </title>
+<link rel ="stylesheet" href ="reset.css">
+<link rel ="stylesheet" href ="style.css">
+<link rel="stylesheet" href="dark-mode.css">
+</head>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('form');
+      const inputs = document.querySelectorAll('.input-padrao');
+  
+      inputs.forEach(input => {
+        input.addEventListener('blur', function () {
+          if (!this.validity.valid) {
+            this.classList.add('erro');
+          } else {
+            this.classList.remove('erro');
+          }
+        });
+      });
+  
+      const links = document.querySelectorAll('a[href^="#"]');
+      links.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+  
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+  
+          const button = this.querySelector('.enviar');
+          const originalText = button.value;
+  
+          button.value = 'Enviando...';
+          button.disabled = true;
+  
+          setTimeout(() => {
+            button.value = 'Mensagem Enviada!';
+            button.style.background = '#28a745';
+  
+            setTimeout(() => {
+              button.value = originalText;
+              button.disabled = false;
+              button.style.background = '';
+            }, 2000);
+          }, 1000);
+        });
+      }
+    });
+  </script>
+<body>
+<header>
+<div class ="caixa">
+<h1 >
+<img src ="imagens/logo.jpg" alt =" Logo da Game Station">
+</h1>
+
+<nav>
+<ul>
+<li > <a href ="index.html"> Home </a></li>
+<li > <a href ="produtos.html"> Produtos </a></li>
+<li > <a href="galeria.html"> Galeria </a></li>
+<li><a href="blog.html">Blog</a></li>
+<li > <a href ="contato.html"> Contato </a></li>
+</ul >
+</nav>
+</div >
+</header >
+
+<main>
+<h2 class =" titulo-principal-produtos"> Nossos Produtos/Serviços </h2>
+
+
+<ul class = "produtos">
+<li>
+<h3 >Play Station 5</h3 >
+<img src ="imagens/produto1.jpg " alt ="Ps5">
+<p class =" produto - descricao ">um dos consoles mais cobiçados de 2025, o famoso Ps5, jogue com conforto dentro de sua casa.</p>
+
+<p class ="produto-preco "> R$ 3,790 </p>
+</li>
+
+<li>
+<h3>Nintendo Switch</h3 >
+<img src ="imagens/produto2.jpg" alt ="Nintendo Switch">
+<p class ="produto-descricao">compre agora um dos consoles portateis mais famoso da atualidade, com jogos incrivéis e unicos que nem nossos clientes.</p>
+<p class ="produto-preco"> R$ 1,999</p>
+</li>
+
+<li>
+<h3>Computador gamer</h3>
+<img src ="imagens/produto3.jpg" alt ="Pc Gamer">
+<p class ="produto-descricao">o que todo brasileiro jovem e até adulto querem,com Intel Core I5 12400f, Geforce RTX 3050 8GB, 16gb Ram, SSD 512gb, Fonte 600w 80 Plus, compre e seja feliz.</p>
+<p class ="produto-preco "> R$ 4.079,00 </p>
+</li >
+</ul >
+</main >
+
+<footer>
+<img src ="imagens/logo-branco.jpg" alt =" Logo da Game Station">
+<p class ="copyright">&copy; Copyright Game Station - 2024
+</p>
+</footer>
+<script src="dark-mode.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria - Game Station</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-galeria.css">
+    <link rel="stylesheet" href="dark-mode.css">
+</head>
+<body>
+    <header>
+        <div class="caixa">
+            <h1><img src="imagens/logo.jpg" alt="Logo Game Station"></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2 class="titulo-principal-produtos">Nossa Galeria</h2>
+        
+        <!-- Filtros da Galeria -->
+        <div class="filtros-galeria">
+            <button class="filtro-btn ativo" data-filtro="todos">Todos</button>
+            <button class="filtro-btn" data-filtro="categoria1">Jogos</button>
+            <button class="filtro-btn" data-filtro="categoria2">Consoles</button>
+            <button class="filtro-btn" data-filtro="categoria3">Eletrônicos</button>
+        </div>
+
+        <!-- Grid de Imagens -->
+        <div class="galeria-grid">
+            <!-- Item 1 -->
+            <div class="galeria-item" data-categoria="categoria1">
+                <img src="imagens/galeria1.jpg" alt="Zelda">
+                <div class="galeria-overlay">
+                    <h3>Zelda Breath of the Wild</h3>
+                    <p>Se aventure com Link numa jornada longa e incrível.</p>
+                    <button class="btn-ver-mais">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="galeria-item" data-categoria="categoria2">
+                <img src="imagens/galeria2.jpg" alt="Xbox Series X">
+                <div class="galeria-overlay">
+                    <h3>Xbox Series X</h3>
+                    <p>Um dos consoles mais famosos da atualidade, Apenas se comparando com o Ps5.</p>
+                    <button class="btn-ver-mais">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="galeria-item galeria-item-grande" data-categoria="categoria1">
+                <img src="imagens/galeria3.jpg" alt="God of War Ragnarok">
+                <div class="galeria-overlay">
+                    <h3>God of War Ragnarok</h3>
+                    <p>Se aventure numa jornada novamente com Kratos e seu filho Atreus, Ambos indo lutar na guerra dos deuses O Ragnarok.</p>
+                    <button class="btn-ver-mais">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="galeria-item" data-categoria="categoria3">
+                <img src="imagens/galeria4.jpg" alt="Fone de Ouvido Bluetooth">
+                <div class="galeria-overlay">
+                    <h3>Fone de Ouvido Bluetooth</h3>
+                    <p>fones de alta qualidade e com uma bateria que dura 24 horas.</p>
+                    <button class="btn-ver-mais">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="galeria-item" data-categoria="categoria2">
+                <img src="imagens/galeria5.jpg" alt="Nintendo Switch 2">
+                <div class="galeria-overlay">
+                    <h3>Nintendo Switch 2</h3>
+                    <p>O sucessor do Nintendo Switch, Ai vem em seguida o segundo da serie, com qualidades melhoradas e maior que o antigo.</p>
+                    <button class="btn-ver-mais">Ver Detalhes</button>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="galeria-item" data-categoria="categoria3">
+                <img src="imagens/galeria6.jpg" alt="Smart Watch">
+                <div class="galeria-overlay">
+                    <h3>Smart Watch</h3>
+                    <p>Relógio inteligente com tecnologia de ponta, Essa belezinha pode fazer muito mais do que mostrar a hora.</p>
+                    <button class="btn-ver-mais">Ver Detalhes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal/Lightbox -->
+        <div class="modal-galeria" id="modalGaleria">
+            <span class="fechar-modal">&times;</span>
+            <img class="modal-conteudo" id="modalImagem">
+            <div class="modal-caption" id="modalCaption"></div>
+            <div class="modal-navegacao">
+                <button class="nav-btn prev">❮ Anterior</button>
+                <button class="nav-btn next">Próximo ❯</button>
+            </div>
+        </div>
+
+        <!-- Seção de Estatísticas -->
+        <section class="estatisticas">
+            <h3>Nossos Números</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-numero" data-target="150">0</span>
+                    <span class="stat-label">Projetos Realizados</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-numero" data-target="98">0</span>
+                    <span class="stat-label">Clientes Satisfeitos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-numero" data-target="5">0</span>
+                    <span class="stat-label">Anos de Experiência</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-numero" data-target="24">0</span>
+                    <span class="stat-label">Prêmios Recebidos</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <img src="imagens/logo-branco.jpg" alt="Logo Game Station">
+        <p class="copyright">&copy; Copyright Game Station - 2024</p>
+    </footer>
+
+    <!-- JavaScript da Galeria -->
+    <script>
+        // Filtro da Galeria
+        const filtros = document.querySelectorAll('.filtro-btn');
+        const itens = document.querySelectorAll('.galeria-item');
+
+        filtros.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove classe ativo de todos
+                filtros.forEach(f => f.classList.remove('ativo'));
+                // Adiciona classe ativo no clicado
+                this.classList.add('ativo');
+                
+                const filtro = this.getAttribute('data-filtro');
+                
+                itens.forEach(item => {
+                    if(filtro === 'todos' || item.getAttribute('data-categoria') === filtro) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fadeIn 0.5s';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Modal/Lightbox
+        const modal = document.getElementById('modalGaleria');
+        const modalImg = document.getElementById('modalImagem');
+        const modalCaption = document.getElementById('modalCaption');
+        const verMaisBtns = document.querySelectorAll('.btn-ver-mais');
+        const fecharModal = document.querySelector('.fechar-modal');
+
+        verMaisBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const item = this.closest('.galeria-item');
+                const img = item.querySelector('img');
+                const titulo = item.querySelector('h3').textContent;
+                const descricao = item.querySelector('p').textContent;
+                
+                modal.style.display = 'block';
+                modalImg.src = img.src;
+                modalCaption.innerHTML = `<h3>${titulo}</h3><p>${descricao}</p>`;
+            });
+        });
+
+        fecharModal.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        modal.onclick = function(e) {
+            if(e.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Contador animado
+        const contadores = document.querySelectorAll('.stat-numero');
+        const velocidade = 200;
+
+        function iniciarContador(contador) {
+            const alvo = +contador.getAttribute('data-target');
+            const incremento = alvo / velocidade;
+            
+            function atualizarContador() {
+                const atual = +contador.innerText;
+                
+                if(atual < alvo) {
+                    contador.innerText = Math.ceil(atual + incremento);
+                    setTimeout(atualizarContador, 1);
+                } else {
+                    contador.innerText = alvo;
+                }
+            }
+            
+            atualizarContador();
+        }
+
+        // Observador para iniciar animação quando visível
+        const observador = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const contador = entry.target;
+                    if(contador.innerText === '0') {
+                        iniciarContador(contador);
+                    }
+                }
+            });
+        });
+
+        contadores.forEach(contador => {
+            observador.observe(contador);
+        });
+
+        // Animação de fade in
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    <script src="dark-mode.js"></script>
+</body>
+</html>
